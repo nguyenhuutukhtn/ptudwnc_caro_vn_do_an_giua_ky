@@ -10,7 +10,7 @@ import {
   MDBIcon,
   MDBModalFooter
 } from 'mdbreact';
-import "./login.css";
+import './login.css';
 
 const Login = () => {
   return (
@@ -19,7 +19,7 @@ const Login = () => {
         <MDBRow>
           <MDBCol className="d-flex justify-content-center">
             <MDBCard>
-              <MDsBCardBody>
+              <MDBCardBody>
                 <div className="text-center">
                   <h3 className="dark-grey-text mb-5">
                     <strong>Đăng nhập</strong>
@@ -82,7 +82,7 @@ const Login = () => {
                     <MDBIcon fab icon="google-plus-g" className="blue-text" />
                   </MDBBtn>
                 </div>
-              </MDsBCardBody>
+              </MDBCardBody>
               <MDBModalFooter className="mx-5 pt-3 mb-1">
                 <p className="font-small grey-text d-flex justify-content-end">
                   Bạn chưa có tài khoản?

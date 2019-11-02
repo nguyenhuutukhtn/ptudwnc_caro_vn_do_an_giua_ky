@@ -10,8 +10,9 @@ import Login from './components/login/Login';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/@fortawesome/fontawesome-free/css/all.min.css';
 import '../node_modules/mdbreact/dist/css/mdb.css';
+import Register from './components/register/register';
 
-ReactDOM.render(<Login />, document.getElementById('root'));
+ReactDOM.render(<Register />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
