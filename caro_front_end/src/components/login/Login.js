@@ -86,7 +86,7 @@ const Login = () => {
               <MDBModalFooter className="mx-5 pt-3 mb-1">
                 <p className="font-small grey-text d-flex justify-content-end">
                   Bạn chưa có tài khoản?
-                  <a href="#!" className="blue-text ml-1">
+                  <a href="/register" className="blue-text ml-1">
                     Tạo tài khoản
                   </a>
                 </p>
