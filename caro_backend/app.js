@@ -16,6 +16,7 @@ var store = require('express-session').Store;
 // var BetterMemoryStore = require(__dirname + '/memory');
 // var store = new BetterMemoryStore({ expires: 60 * 60 * 1000, debug: true });
 var authRouter = require('./routes/auth');
+require('./config/passport');
 
 var app = express();
 
