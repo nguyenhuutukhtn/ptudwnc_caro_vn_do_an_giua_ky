@@ -13,6 +13,7 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var crypto = require('crypto');
 var store = require('express-session').Store;
+var cors = require('cors');
 // var BetterMemoryStore = require(__dirname + '/memory');
 // var store = new BetterMemoryStore({ expires: 60 * 60 * 1000, debug: true });
 var authRouter = require('./routes/auth');
@@ -31,6 +32,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
 app.use(bodyParser());
+app.use(cors());
 
 // required for passport
 // app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret

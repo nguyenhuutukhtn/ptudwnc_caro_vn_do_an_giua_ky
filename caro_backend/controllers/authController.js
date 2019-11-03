@@ -15,7 +15,8 @@ jwtOptions.secretOrKey = '3ln8TKJw2lOGllPJToyW';
 
 module.exports = {
   register: (req, res, next) => {
-    // console.log(req.body);
+    console.log(req);
+    console.log(req.body);
     // const { name, password } = req.body;
     var password = req.body.password;
     var password2 = req.body.password2;

@@ -1,21 +1,63 @@
 import React from 'react';
 import logo from './logo.svg';
 // import './App.css';
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
+import {
+  Route,
+  Link,
+  BrowserRouter as Router,
+  Redirect
+} from 'react-router-dom';
 import Login from './components/login/Login';
 import Register from './components/register/register';
+import { history } from './helpers/history';
+import { MDBContainer, MDBAlert, MDBNotification } from 'mdbreact';
+import { alertActions } from './actions/alert.action';
+import { connect } from 'react-redux';
 
-function App() {
-  return (
-    <div className="App">
-      <Router>
-        <div className="main-route-place">
-          <Route exact path="/" component={Login} />
-          <Route path="/register" component={Register} />
-        </div>
-      </Router>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    history.listen((location, action) => {
+      // clear alert on location change
+      this.props.clearAlerts();
+    });
+  }
+  render() {
+    const { alert } = this.props;
+
+    return (
+      <div className="App">
+        {/* {alert.message && (
+          <MDBAlert color="danger" className={`text-center ${alert.type}`}>
+            A simple success alert—check it out!
+          </MDBAlert>
+        )} */}
+
+        <Router>
+          <div className="main-route-place">
+            <Route exact path="/" component={Login} />
+            <Route path="/register" component={Register} />
+            {/* <Redirect from="" to="/" /> */}
+          </div>
+        </Router>
+      </div>
+    );
+  }
 }
 
-export default App;
+function mapState(state) {
+  const { alert } = state;
+  return { alert };
+}
+
+const actionCreators = {
+  clearAlerts: alertActions.clear
+};
+
+const connectedApp = connect(
+  mapState,
+  actionCreators
+)(App);
+
+export default connectedApp;
