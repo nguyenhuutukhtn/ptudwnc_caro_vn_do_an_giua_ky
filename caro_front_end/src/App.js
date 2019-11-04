@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
-// import './App.css';
+import './App.css';
 import {
   Route,
   Link,
@@ -30,6 +30,7 @@ class App extends React.Component {
   }
   render() {
     const { alert } = this.props;
+    document.body.style = 'background: black;';
 
     return (
       <div className="App">
