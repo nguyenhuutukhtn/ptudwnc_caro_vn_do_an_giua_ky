@@ -13,6 +13,7 @@ import { history } from './helpers/history';
 import { MDBContainer, MDBAlert, MDBNotification } from 'mdbreact';
 import { alertActions } from './actions/alert.action';
 import { connect } from 'react-redux';
+import Home from './components/home/home';
 
 class App extends React.Component {
   constructor(props) {
@@ -36,8 +37,9 @@ class App extends React.Component {
 
         <Router>
           <div className="main-route-place">
-            <Route exact path="/" component={Login} />
+            <Route exact path="/" component={Home} />
             <Route path="/register" component={Register} />
+            <Route path="/login" component={Login} />
             {/* <Redirect from="" to="/" /> */}
           </div>
         </Router>

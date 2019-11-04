@@ -5,6 +5,7 @@ var jwt = require('jsonwebtoken');
 var jwtOptions = {};
 var passport = require('passport');
 var passportJWT = require('passport-jwt');
+const LocalStrategy = require('passport-local').Strategy;
 
 var ExtractJwt = passportJWT.ExtractJwt;
 var JwtStrategy = passportJWT.Strategy;
@@ -12,6 +13,45 @@ var JwtStrategy = passportJWT.Strategy;
 var jwtOptions = {};
 jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('jwt');
 jwtOptions.secretOrKey = '3ln8TKJw2lOGllPJToyW';
+
+// Passport session setup.
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
+
+passport.use(
+  new LocalStrategy(
+    {
+      usernameField: 'username',
+      passwordField: 'password'
+    },
+    function(username, password, cb) {
+      return userModel
+        .getByUsername(username)
+        .then(user => {
+          console.log(user);
+          bcrypt.compare(password, user[0].password, function(err, res) {
+            if (res == false) {
+              return cb(null, false, {
+                message: 'Tên đăng nhập hoặc mật khẩu không đúng.'
+              });
+            } else {
+              return cb(null, user, { message: 'Đăng nhập thành công' });
+            }
+          });
+          //   if (!user) {
+          //     return cb(null, false, { message: "Incorrect email or password." });
+          //   }
+          //   return cb(null, user, { message: "Logged In Successfully" });
+        })
+        .catch(err => cb(err));
+    }
+  )
+);
 
 module.exports = {
   register: (req, res, next) => {
@@ -68,5 +108,34 @@ module.exports = {
         }
       }
     });
+  },
+  login: (req, res, next) => {
+    // console.log(req.body.email);
+    passport.authenticate('local', { session: false }, (err, user, info) => {
+      if (err || !user) {
+        console.log(err);
+        console.log(user);
+        console.log(info);
+
+        return res.status(400).json({
+          message: 'Có lỗi xảy ra, vui lòng thử lại',
+          user: user
+        });
+      }
+      req.login(user, { session: false }, err => {
+        if (err) {
+          res.send(err);
+        }
+        // generate a signed son web token with the contents of user object and return it in the response
+
+        var userInfo = {
+          id: user[0].id,
+          username: user[0].username,
+          fullName: user[0].fullName
+        };
+        const session = jwt.sign(userInfo, jwtOptions.secretOrKey);
+        return res.json({ userInfo, session });
+      });
+    })(req, res);
   }
 };
