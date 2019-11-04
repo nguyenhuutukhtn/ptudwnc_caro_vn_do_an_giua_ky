@@ -7,6 +7,6 @@ const initialState = {};
 
 const loggerMiddleware = createLogger();
 
-const middleware = [thunkMiddleware];
+const middleware = [thunkMiddleware, loggerMiddleware];
 
 export const store = createStore(rootReducer, applyMiddleware(...middleware));

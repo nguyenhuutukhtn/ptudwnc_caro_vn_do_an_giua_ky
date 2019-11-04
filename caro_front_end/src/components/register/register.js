@@ -48,7 +48,9 @@ class Register extends React.Component {
 
   submitHandler(event) {
     event.preventDefault();
-    this.setState({ submitted: true });
+    this.setState({
+      submitted: true
+    });
     const { user } = this.state;
     if (user.username && user.email && user.password && user.password2) {
       this.props.register(user);
@@ -56,6 +58,7 @@ class Register extends React.Component {
   }
   render() {
     const { user, submitted, matchedPassword } = this.state;
+    const { loading } = this.props;
     return (
       <div>
         <form className="needs-validation" onSubmit={this.submitHandler}>
@@ -144,13 +147,19 @@ class Register extends React.Component {
                         className="btn-block z-depth-1a"
                       >
                         Đăng ký
+                        {loading ? (
+                          <div
+                            class="spinner-border spinner-border-sm fast"
+                            role="status"
+                          />
+                        ) : null}
                       </MDBBtn>
                     </div>
                   </MDBCardBody>
                   <MDBModalFooter className="mx-5 pt-3 mb-1">
                     <p className="font-small grey-text d-flex justify-content-end">
                       Đã có tài khoản?
-                      <a href="#!" className="blue-text ml-1">
+                      <a href="/login" className="blue-text ml-1">
                         Đăng nhập
                       </a>
                     </p>
@@ -165,17 +174,17 @@ class Register extends React.Component {
   }
 }
 
-// function mapState(state) {
-//   const { registering } = state.registration;
-//   return { registering };
-// }
+function mapState(state) {
+  const { loading } = state.registration;
+  return { loading };
+}
 
 const actionCreators = {
   register: userActions.register
 };
 
 const connectedRegisterPage = connect(
-  null,
+  mapState,
   actionCreators
 )(Register);
 

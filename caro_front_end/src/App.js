@@ -5,7 +5,8 @@ import {
   Route,
   Link,
   BrowserRouter as Router,
-  Redirect
+  Redirect,
+  Switch
 } from 'react-router-dom';
 import Login from './components/login/Login';
 import Register from './components/register/register';
@@ -14,6 +15,7 @@ import { MDBContainer, MDBAlert, MDBNotification } from 'mdbreact';
 import { alertActions } from './actions/alert.action';
 import { connect } from 'react-redux';
 import Home from './components/home/home';
+import { PrivateRoute } from './components/privateRoute/PrivateRoute';
 
 class App extends React.Component {
   constructor(props) {
@@ -22,6 +24,8 @@ class App extends React.Component {
     history.listen((location, action) => {
       // clear alert on location change
       this.props.clearAlerts();
+      // window.location.reload();
+      console.log('history change');
     });
   }
   render() {
@@ -29,18 +33,19 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        {/* {alert.message && (
-          <MDBAlert color="danger" className={`text-center ${alert.type}`}>
-            A simple success alert—check it out!
+        {alert.message && (
+          <MDBAlert className={`alert text-center ${alert.type}`}>
+            {alert.message}
           </MDBAlert>
-        )} */}
-
-        <Router>
+        )}
+        <Router history={history}>
           <div className="main-route-place">
-            <Route exact path="/" component={Home} />
-            <Route path="/register" component={Register} />
-            <Route path="/login" component={Login} />
-            {/* <Redirect from="" to="/" /> */}
+            <Switch>
+              <PrivateRoute exact path="/" component={Home} />
+              <Route path="/register" component={Register} />
+              <Route path="/login" component={Login} />
+              <Redirect from="*" to="/" />
+            </Switch>
           </div>
         </Router>
       </div>

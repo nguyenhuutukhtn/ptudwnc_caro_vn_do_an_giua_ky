@@ -15,9 +15,13 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/@fortawesome/fontawesome-free/css/all.min.css';
 import '../node_modules/mdbreact/dist/css/mdb.css';
 import Register from './components/register/register';
+import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
 
 render(
   <Provider store={store}>
+    {/* <BrowserRouter>
+      <App />
+    </BrowserRouter> */}
     <App />
   </Provider>,
   document.getElementById('root')

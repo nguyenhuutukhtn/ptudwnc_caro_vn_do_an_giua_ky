@@ -33,7 +33,11 @@ passport.use(
       return userModel
         .getByUsername(username)
         .then(user => {
-          console.log(user);
+          if (user.length === 0) {
+            return cb(null, false, {
+              message: 'Tên đăng nhập hoặc mật khẩu không đúng.'
+            });
+          }
           bcrypt.compare(password, user[0].password, function(err, res) {
             if (res == false) {
               return cb(null, false, {
@@ -66,7 +70,7 @@ module.exports = {
         console.log(userInfo);
         res
           .status(500)
-          .json('{message: "Tên đăng nhập đã tồn tại"}')
+          .json({ message: 'Tên đăng nhập đã tồn tại' })
           .end();
       } else {
         if (password == password2) {
@@ -103,22 +107,23 @@ module.exports = {
         } else {
           res
             .status(500)
-            .json('{message: "Mật khẩu không chính xác"}')
+            .json({ message: 'Mật khẩu không chính xác' })
             .end();
         }
       }
     });
   },
   login: (req, res, next) => {
+    // console.log(req);
     // console.log(req.body.email);
     passport.authenticate('local', { session: false }, (err, user, info) => {
       if (err || !user) {
-        console.log(err);
-        console.log(user);
-        console.log(info);
+        console.log('err' + err);
+        console.log('user' + user);
+        console.log('info' + info);
 
         return res.status(400).json({
-          message: 'Có lỗi xảy ra, vui lòng thử lại',
+          message: info.message,
           user: user
         });
       }
