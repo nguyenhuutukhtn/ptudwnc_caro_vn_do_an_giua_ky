@@ -1,0 +1,105 @@
+body {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 20px;
+  min-width: 1200px;
+}
+
+ol, ul {
+  padding-left: 30px;
+}
+
+li {
+  cursor: pointer;
+}
+
+a {
+  font-size: 18px;
+}
+
+.amove{
+  font-size: 15px;
+}
+
+span{
+  font-size: 20px;
+}
+
+
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.status {
+  margin-bottom: 10px;
+}
+
+.square {
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 34px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 34px;
+}
+
+.square:focus {
+  outline: none;
+}
+
+.kbd-navigation .square:focus {
+  background: #ddd;
+}
+
+.game {
+  display: flex;
+  flex-direction: row;
+}
+
+.game-info {
+  margin-left: 20px;
+}
+
+.absolute {
+  position: absolute;
+
+  left: 350px;
+  width: 300px;
+}
+
+.first{
+  top: 0px;
+}
+
+.second{
+  top: 180px;
+}
+
+.relative{
+  position: relative;
+}
+
+.selected{
+  font-weight: bold;
+  color: black;
+}
+
+.button {
+    background-color: #80cd92;; /* Green */
+    border: none;
+    padding: 8px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.button:hover {background-color: #4CAF50; }

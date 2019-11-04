@@ -16,6 +16,7 @@ import { alertActions } from './actions/alert.action';
 import { connect } from 'react-redux';
 import Home from './components/home/home';
 import { PrivateRoute } from './components/privateRoute/PrivateRoute';
+import OfflineBoard from './components/offlineBoard/offlineBoard';
 
 class App extends React.Component {
   constructor(props) {
@@ -30,7 +31,6 @@ class App extends React.Component {
   }
   render() {
     const { alert } = this.props;
-    document.body.style = 'background: black;';
 
     return (
       <div className="App">
@@ -45,6 +45,7 @@ class App extends React.Component {
               <PrivateRoute exact path="/" component={Home} />
               <Route path="/register" component={Register} />
               <Route path="/login" component={Login} />
+              <Route path="/offline" component={OfflineBoard} />
               <Redirect from="*" to="/" />
             </Switch>
           </div>

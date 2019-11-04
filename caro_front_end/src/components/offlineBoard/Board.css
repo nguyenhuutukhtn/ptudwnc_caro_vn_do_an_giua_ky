@@ -1,0 +1,28 @@
+.board {
+    display: flex;
+    width: 600px;
+    height: 600px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.square {
+    height: 42px;
+    width: 42px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    font-size: 1.6em;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+}
+
+.square:hover {
+    cursor: pointer;
+    background-color: #80cd92;
+}
+
+.winner{
+    background-color: #80cd92;
+}
