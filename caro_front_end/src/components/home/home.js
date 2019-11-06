@@ -23,9 +23,14 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.btnOfflineClick = this.btnOfflineClick.bind(this);
+    this.btnOnlineClick = this.btnOnlineClick.bind(this);
   }
   btnOfflineClick() {
     history.push('/offline');
+    window.location.reload();
+  }
+  btnOnlineClick() {
+    history.push('/online');
     window.location.reload();
   }
   render() {
@@ -44,7 +49,7 @@ class Home extends React.Component {
                       </MDBBtn>
                     </MDBNavItem>
                     <MDBNavItem>
-                      <MDBBtn>
+                      <MDBBtn onClick={this.btnOnlineClick}>
                         <MDBIcon icon="globe-asia" /> Chơi Online
                       </MDBBtn>
                     </MDBNavItem>

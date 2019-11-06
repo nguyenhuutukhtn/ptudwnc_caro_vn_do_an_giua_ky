@@ -17,6 +17,7 @@ import { connect } from 'react-redux';
 import Home from './components/home/home';
 import { PrivateRoute } from './components/privateRoute/PrivateRoute';
 import OfflineBoard from './components/offlineBoard/offlineBoard';
+import OnlineBoard from './components/offlineBoard/onlineBoard';
 
 class App extends React.Component {
   constructor(props) {
@@ -46,6 +47,7 @@ class App extends React.Component {
               <Route path="/register" component={Register} />
               <Route path="/login" component={Login} />
               <Route path="/offline" component={OfflineBoard} />
+              <Route path="/online" component={OnlineBoard} />
               <Redirect from="*" to="/" />
             </Switch>
           </div>

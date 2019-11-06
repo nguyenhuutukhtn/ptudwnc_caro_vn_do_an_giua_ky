@@ -19,6 +19,18 @@ var cors = require('cors');
 var authRouter = require('./routes/auth');
 require('./config/passport');
 
+//socket
+// var http = require('http').Server(function(req, res) {
+//   res.writeHead(301, {
+//     location: 'http://localhost'
+//   });
+//   res.end();
+// });
+
+// var server = app.listen(1234);
+// var io = require('socket.io').listen(server);
+// var io = require('socket.io')(http);
+
 var app = express();
 
 // view engine setup
@@ -52,6 +64,9 @@ app.use(
     saveUninitialized: true
   })
 );
+
+//socket
+// io.set('origins', '*:*');
 
 // require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 

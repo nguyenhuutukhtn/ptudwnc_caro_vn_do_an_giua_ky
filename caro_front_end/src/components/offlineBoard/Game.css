@@ -1,10 +1,11 @@
 body {
-  font: 14px "Century Gothic", Futura, sans-serif;
+  font: 14px 'Century Gothic', Futura, sans-serif;
   margin: 20px;
   min-width: 1200px;
 }
 
-ol, ul {
+ol,
+ul {
   padding-left: 30px;
 }
 
@@ -16,18 +17,17 @@ a {
   font-size: 18px;
 }
 
-.amove{
+.amove {
   font-size: 15px;
 }
 
-span{
+span {
   font-size: 20px;
 }
 
-
 .board-row:after {
   clear: both;
-  content: "";
+  content: '';
   display: table;
 }
 
@@ -74,32 +74,34 @@ span{
   width: 300px;
 }
 
-.first{
+.first {
   top: 0px;
 }
 
-.second{
+.second {
   top: 180px;
 }
 
-.relative{
+.relative {
   position: relative;
 }
 
-.selected{
+.selected {
   font-weight: bold;
   color: black;
 }
 
 .button {
-    background-color: #80cd92;; /* Green */
-    border: none;
-    padding: 8px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
+  background-color: #80cd92; /* Green */
+  border: none;
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-.button:hover {background-color: #4CAF50; }
+.button:hover {
+  background-color: #4caf50;
+}
