@@ -14,6 +14,7 @@ import './login.css';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { userActions } from '../../actions/user.action';
+import { history } from '../../helpers/history';
 
 class Login extends React.Component {
   constructor(props) {
@@ -46,9 +47,21 @@ class Login extends React.Component {
       this.props.login(username, password);
     }
   }
+
+  checkLogin(){
+    var userInfo = localStorage.getItem('userInfo');
+    if (userInfo){
+      history.push('/');
+      window.location.reload();
+    }
+  }
+  
   render() {
+
     const { submitted, username, password } = this.state;
     const { loggingIn } = this.props;
+
+
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -94,9 +107,9 @@ class Login extends React.Component {
                       ) : null}
                     </MDBInput>
                     <p className="font-small blue-text d-flex justify-content-end pb-3">
-                      Quên
+                      
                       <a href="#!" className="blue-text ml-1">
-                        Mật khẩu?
+                      Quên Mật khẩu?
                       </a>
                     </p>
                     <div className="text-center mb-3">

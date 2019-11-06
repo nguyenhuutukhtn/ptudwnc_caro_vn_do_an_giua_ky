@@ -105,18 +105,10 @@ class Board extends Component {
     return (
       <div>
         {this.formatSquare()}
-        <Source></Source>
+
       </div>
     );
   }
 }
 
 export default Board;
-
-
-// return: the source code link
-function Source(){
-  return (
-    <a href="https://github.com/blindacai/Tic-Tac-Toe">Source Code</a>
-  );
-}

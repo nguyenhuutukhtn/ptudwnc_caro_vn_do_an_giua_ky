@@ -77,6 +77,7 @@ class Register extends React.Component {
                       group
                       type="text"
                       validate
+                      containerClass="text-left"
                       name="username"
                       error="wrong"
                       success="right"
@@ -97,7 +98,7 @@ class Register extends React.Component {
                       type="email"
                       name="email"
                       validate
-                      containerClass="mb-0"
+                      containerClass="mb-0 text-left"
                       icon="envelope"
                       onChange={this.onChangeHandler}
                     >
@@ -113,7 +114,7 @@ class Register extends React.Component {
                       type="password"
                       name="password"
                       validate
-                      containerClass="mb-0"
+                      containerClass="mb-0 text-left"
                       icon="lock"
                       onChange={this.onChangeHandler}
                     >
@@ -129,7 +130,7 @@ class Register extends React.Component {
                       type="password"
                       validate
                       name="password2"
-                      containerClass="mb-0"
+                      containerClass="mb-0 text-left"
                       icon="exclamation-triangle"
                       onChange={this.onChangeHandler}
                     >
